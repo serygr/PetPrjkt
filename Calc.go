@@ -74,7 +74,7 @@ func calculate(num1 interface{}, operator string, num2 interface{}) interface{} 
 	case "-":
 		return subtract(num1, num2)
 	case "*":
-		return multiply(num1, num2)
+		return Multiply(num1, num2)
 	case "/":
 		return divide(num1, num2)
 	default:
@@ -132,7 +132,7 @@ func subtract(a interface{}, b interface{}) interface{} {
 	}
 }
 
-func multiply(a interface{}, b interface{}) interface{} {
+func Multiply(a interface{}, b interface{}) interface{} {
 	switch a := a.(type) {
 	case int:
 		switch b := b.(type) {

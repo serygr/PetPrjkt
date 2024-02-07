@@ -70,19 +70,19 @@ func evaluateExpression(input string) (interface{}, error) {
 func calculate(num1 interface{}, operator string, num2 interface{}) interface{} {
 	switch operator {
 	case "+":
-		return add(num1, num2)
+		return Add(num1, num2)
 	case "-":
-		return subtract(num1, num2)
+		return Subtract(num1, num2)
 	case "*":
 		return Multiply(num1, num2)
 	case "/":
-		return divide(num1, num2)
+		return Divide(num1, num2)
 	default:
 		return nil
 	}
 }
 
-func add(a interface{}, b interface{}) interface{} {
+func Add(a interface{}, b interface{}) interface{} {
 	switch a := a.(type) {
 	case int:
 		switch b := b.(type) {
@@ -98,7 +98,7 @@ func add(a interface{}, b interface{}) interface{} {
 		case int:
 			panic(fmt.Sprintf("Используются разные системы счисления"))
 		case string:
-			return addRomanNum(a, b)
+			return AddRomanNum(a, b)
 		default:
 			return nil
 		}
@@ -107,7 +107,7 @@ func add(a interface{}, b interface{}) interface{} {
 	}
 }
 
-func subtract(a interface{}, b interface{}) interface{} {
+func Subtract(a interface{}, b interface{}) interface{} {
 	switch a := a.(type) {
 	case int:
 		switch b := b.(type) {
@@ -123,7 +123,7 @@ func subtract(a interface{}, b interface{}) interface{} {
 		case int:
 			panic(fmt.Sprintf("Используются разные системы счисления"))
 		case string:
-			return subtractRomanNum(a, b)
+			return SubtractRomanNum(a, b)
 		default:
 			return nil
 		}
@@ -148,7 +148,7 @@ func Multiply(a interface{}, b interface{}) interface{} {
 		case int:
 			panic(fmt.Sprintf("Используются разные системы счисления"))
 		case string:
-			return multiplyRomanNum(a, b)
+			return MultiplyRomanNum(a, b)
 		default:
 			return nil
 		}
@@ -157,7 +157,7 @@ func Multiply(a interface{}, b interface{}) interface{} {
 	}
 }
 
-func divide(a interface{}, b interface{}) interface{} {
+func Divide(a interface{}, b interface{}) interface{} {
 	switch a := a.(type) {
 	case int:
 		switch b := b.(type) {
@@ -173,7 +173,7 @@ func divide(a interface{}, b interface{}) interface{} {
 		case int:
 			panic(fmt.Sprintf("Используются разные системы счисления"))
 		case string:
-			return divideRomanNum(a, b)
+			return DivideRomanNum(a, b)
 		default:
 			return nil
 		}
@@ -223,27 +223,27 @@ func romanToArab(s string) int {
 	return val
 }
 
-func addRomanNum(a, b string) string {
+func AddRomanNum(a, b string) string {
 	num1 := romanToArab(a)
 	num2 := romanToArab(b)
 	result := num1 + num2
 	return arabicToRoman(result)
 }
-func subtractRomanNum(a, b string) string {
+func SubtractRomanNum(a, b string) string {
 	num1 := romanToArab(a)
 	num2 := romanToArab(b)
 	result := num1 - num2
 	return arabicToRoman(result)
 }
 
-func multiplyRomanNum(a, b string) string {
+func MultiplyRomanNum(a, b string) string {
 	num1 := romanToArab(a)
 	num2 := romanToArab(b)
 	result := num1 * num2
 	return arabicToRoman(result)
 }
 
-func divideRomanNum(a, b string) string {
+func DivideRomanNum(a, b string) string {
 	num1 := romanToArab(a)
 	num2 := romanToArab(b)
 	result := num1 / num2
